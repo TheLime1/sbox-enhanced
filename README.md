@@ -19,8 +19,6 @@ s&box Enhanced adds two buttons underneath the usual package actions:
 
 It works on the main game page as well as Changes, Forum, Reviews, and Metrics pages. It stays out of the way on maps, models, materials, and other package types.
 
-Clicking the extension icon also gives you quick links to the project and [LimeStudio](https://sbox.game/limestudio).
-
 <p align="center">
   <img src="assets/screenshots/popup.png" width="336" alt="s&box Enhanced extension popup">
 </p>
