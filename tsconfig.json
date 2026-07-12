@@ -1,0 +1,13 @@
+{
+  "extends": "plasmo/templates/tsconfig.base",
+  "exclude": ["node_modules", "build"],
+  "include": [".plasmo/index.d.ts", "**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "~*": ["./*"]
+    },
+    "types": ["chrome", "node", "vitest/globals", "@testing-library/jest-dom"]
+  }
+}

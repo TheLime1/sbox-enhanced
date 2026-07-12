@@ -1,0 +1,10 @@
+node_modules/
+.plasmo/
+.playwright-cli/
+build/
+*.zip
+*.tsbuildinfo
+coverage/
+output/
+.DS_Store
+Thumbs.db

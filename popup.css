@@ -1,0 +1,203 @@
+:root {
+  color-scheme: dark;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#__plasmo {
+  width: 336px;
+  min-height: 238px;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #061720;
+  color: #fff;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.popup-shell {
+  position: relative;
+  min-height: 238px;
+  padding: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(145, 202, 19, 0.14), transparent 42%),
+    linear-gradient(145deg, #061720 0%, #081c27 100%);
+}
+
+.popup-shell::before {
+  position: absolute;
+  top: -34px;
+  right: -42px;
+  width: 130px;
+  height: 130px;
+  border: 1px solid rgba(145, 202, 19, 0.14);
+  border-radius: 50%;
+  content: "";
+}
+
+.popup-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 17px;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  letter-spacing: -0.055em;
+}
+
+.brand-sbox,
+.brand-enhanced {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.brand-sbox {
+  color: #fff;
+}
+
+.brand-enhanced {
+  color: #91ca13;
+}
+
+.popup-header p {
+  max-width: 280px;
+  margin: 8px 0 0;
+  color: rgba(214, 228, 236, 0.68);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.popup-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+}
+
+.popup-action {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 17px;
+  align-items: center;
+  gap: 11px;
+  min-height: 58px;
+  padding: 9px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.popup-action:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.popup-action:active {
+  transform: translateY(0);
+}
+
+.popup-action:focus-visible {
+  outline: 2px solid #57aaff;
+  outline-offset: 2px;
+}
+
+.lime-action:hover {
+  border-color: rgba(145, 202, 19, 0.42);
+  background: rgba(145, 202, 19, 0.1);
+}
+
+.action-icon {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border-radius: 7px;
+  place-items: center;
+}
+
+.github-icon {
+  background: #fff;
+  color: #0b1115;
+}
+
+.github-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.lime-icon {
+  background: #fff;
+}
+
+.lime-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action-copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.action-copy strong {
+  overflow: hidden;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-copy small {
+  overflow: hidden;
+  color: rgba(214, 228, 236, 0.56);
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popup-action > svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+  color: rgba(214, 228, 236, 0.5);
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.popup-action:hover > svg {
+  color: #fff;
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup-action,
+  .popup-action > svg {
+    transition: none;
+  }
+}

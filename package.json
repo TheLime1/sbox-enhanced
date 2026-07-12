@@ -1,0 +1,45 @@
+{
+  "name": "sbox-enhanced",
+  "displayName": "s&box Enhanced",
+  "version": "0.1.0",
+  "description": "Launch s&box games through Steam and open community tracking sites from sbox.game.",
+  "scripts": {
+    "dev": "plasmo dev --target=chrome-mv3",
+    "build": "plasmo build --target=chrome-mv3",
+    "package": "plasmo package --target=chrome-mv3",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@fontsource/poppins": "^5.2.7",
+    "@plasmohq/parcel-transformer-inject-env": "^0.2.12",
+    "plasmo": "^0.90.5",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/chrome": "^0.2.2",
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "jsdom": "^27.2.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.0.15"
+  },
+  "manifest": {
+    "manifest_version": 3,
+    "permissions": []
+  },
+  "packageManager": "pnpm@11.7.0"
+}
