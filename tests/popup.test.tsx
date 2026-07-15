@@ -16,7 +16,7 @@ describe("extension popup", () => {
 
     expect(screen.getByRole("link", { name: /contribute/i })).toHaveAttribute(
       "href",
-      "https://github.com/TheLime1"
+      "https://github.com/TheLime1/sbox-enhanced"
     )
     expect(screen.getByRole("link", { name: /try limestudio/i })).toHaveAttribute(
       "href",

@@ -5,7 +5,7 @@ import "./popup.css"
 
 import limeStudioLogo from "data-base64:~assets/limestudio.png"
 
-const GITHUB_URL = "https://github.com/TheLime1"
+const GITHUB_URL = "https://github.com/TheLime1/sbox-enhanced"
 const LIMESTUDIO_URL = "https://sbox.game/limestudio"
 
 function GitHubIcon() {

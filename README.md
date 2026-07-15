@@ -17,6 +17,12 @@ s&box Enhanced adds two buttons underneath the usual package actions:
 - **Play** opens the game directly in s&box through Steam.
 - **Track** lets you open the game on [s&box watch](https://sbox.watch) or [s&boxDB](https://sboxdb.dev).
 
+Creator stats pages also gain local export tools:
+
+- **Overview** exports every aggregate stat as JSON or CSV.
+- **Aggregated** exports all matching players across every page, with LastSeen presets and an exact date range.
+- **Entries** stays disabled because raw event tables can contain tens of thousands of rows, and links back to Aggregated instead.
+
 It works on the main game page as well as Changes, Forum, Reviews, and Metrics pages. It stays out of the way on maps, models, materials, and other package types.
 
 ## Install it locally
@@ -84,7 +90,7 @@ URL templates can use `{organization}` and `{game}`:
 
 ## Permissions and privacy
 
-The extension only runs on `https://sbox.game/*`. It does not collect data, run analytics, use browser storage, or fetch tracker icons at runtime.
+The extension only runs on `https://sbox.game/*`. It does not collect data, run analytics, use browser storage, upload exported stats, or fetch tracker icons at runtime.
 
 Tracker pages only open after you click one of their links.
 

@@ -1,8 +1,8 @@
 {
   "name": "sbox-enhanced",
   "displayName": "s&box Enhanced",
-  "version": "0.1.0",
-  "description": "Launch s&box games through Steam and open community tracking sites from sbox.game.",
+  "version": "1.0.0",
+  "description": "Launch s&box games, open community trackers, and export creator stats from sbox.game.",
   "scripts": {
     "dev": "plasmo dev --target=chrome-mv3",
     "build": "plasmo build --target=chrome-mv3",
