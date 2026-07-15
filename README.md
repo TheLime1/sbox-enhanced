@@ -8,6 +8,12 @@
   A small browser extension that makes game pages on <a href="https://sbox.game">sbox.game</a> a bit more useful.
 </p>
 
+<p align="center">
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/sbox-enhanced/"><img src="assets/badges/firefox-addons.png" height="60" alt="Get the add-on for Firefox"></a>
+  &nbsp;
+  <a href="https://chromewebstore.google.com/detail/sbox-enhanced/aojojkghcmnlanmgpckdpefcjkjnpmpn"><img src="assets/badges/chrome-web-store.png" height="60" alt="Available in the Chrome Web Store"></a>
+</p>
+
 ![s&box Enhanced on a game page](assets/screenshots/game-page.png)
 
 ## What it does
