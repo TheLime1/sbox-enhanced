@@ -4,14 +4,23 @@
   "version": "1.0.0",
   "description": "Launch s&box games, open community trackers, and export creator stats from sbox.game.",
   "scripts": {
-    "dev": "plasmo dev --target=chrome-mv3",
-    "build": "plasmo build --target=chrome-mv3",
-    "package": "plasmo package --target=chrome-mv3",
+    "dev": "pnpm dev:chrome",
+    "dev:chrome": "plasmo dev --target=chrome-mv3",
+    "dev:firefox": "plasmo dev --target=firefox-mv3",
+    "build": "pnpm build:chrome && pnpm build:firefox",
+    "build:chrome": "plasmo build --target=chrome-mv3",
+    "build:firefox": "plasmo build --target=firefox-mv3",
+    "package": "pnpm package:chrome && pnpm package:firefox",
+    "package:chrome": "pnpm build:chrome && plasmo package --target=chrome-mv3",
+    "package:firefox": "pnpm build:firefox && plasmo package --target=firefox-mv3",
     "lint": "eslint .",
+    "lint:firefox": "web-ext lint --source-dir build/firefox-mv3-prod --output=json > build/web-ext-lint.json && node scripts/check-web-ext-lint.mjs",
+    "verify:manifests": "node scripts/verify-manifests.mjs",
+    "release:firefox": "pnpm build && plasmo package --target=firefox-mv3 && pnpm verify:manifests && pnpm lint:firefox && node scripts/package-source.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm verify:manifests && pnpm lint:firefox"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.2.7",
@@ -35,11 +44,23 @@
     "jsdom": "^27.2.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.0",
-    "vitest": "^4.0.15"
+    "vitest": "^4.0.15",
+    "web-ext": "10.5.0"
   },
   "manifest": {
     "manifest_version": 3,
-    "permissions": []
+    "permissions": [],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "@sbox-enhanced",
+        "strict_min_version": "140.0",
+        "data_collection_permissions": {
+          "required": [
+            "none"
+          ]
+        }
+      }
+    }
   },
   "packageManager": "pnpm@11.7.0"
 }

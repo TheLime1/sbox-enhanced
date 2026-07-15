@@ -27,14 +27,16 @@ It works on the main game page as well as Changes, Forum, Reviews, and Metrics p
 
 ## Install it locally
 
-For now, build the extension from source:
+Use Node.js 24 and pnpm 11.7.0, then install and build both browser targets:
 
 ```powershell
-pnpm install
+pnpm install --frozen-lockfile
 pnpm build
 ```
 
-Then open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select:
+### Chromium
+
+Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select:
 
 ```text
 build/chrome-mv3-prod
@@ -42,15 +44,26 @@ build/chrome-mv3-prod
 
 Chrome, Edge, Brave, and other Chromium browsers should all work. Steam needs to be installed and registered to handle `steam://` links. Your browser may ask for confirmation before opening it.
 
-## Development
+### Firefox
 
-Start Plasmo in development mode:
+Firefox 140 or newer is supported on desktop. Open `about:debugging#/runtime/this-firefox`, click **Load Temporary Add-on**, and select:
 
-```powershell
-pnpm dev
+```text
+build/firefox-mv3-prod/manifest.json
 ```
 
-Load `build/chrome-mv3-dev` from the extensions page. Plasmo will rebuild the extension while you work.
+A temporary add-on is removed when Firefox restarts. Persistent Firefox installations need an AMO-signed package.
+
+## Development
+
+Start Plasmo for the browser you are testing:
+
+```powershell
+pnpm dev:chrome
+pnpm dev:firefox
+```
+
+Load `build/chrome-mv3-dev` from the Chromium extensions page or `build/firefox-mv3-dev/manifest.json` from Firefox's **This Firefox** debugging page. Plasmo will rebuild the selected target while you work.
 
 Before opening a pull request, run:
 
@@ -62,11 +75,44 @@ Individual commands are also available:
 
 ```powershell
 pnpm lint
+pnpm lint:firefox
 pnpm typecheck
 pnpm test
 pnpm build
 pnpm package
 ```
+
+`pnpm build` and `pnpm package` cover both Chromium and Firefox. Browser-specific commands are also available as `build:chrome`, `build:firefox`, `package:chrome`, and `package:firefox`.
+
+## Firefox Add-ons release
+
+Run the release command from a clean, committed worktree:
+
+```powershell
+pnpm release:firefox
+```
+
+It builds and validates the Firefox extension, then creates the two files needed for an AMO submission:
+
+```text
+build/firefox-mv3-prod.zip
+build/sbox-enhanced-1.0.0-source.zip
+```
+
+The source archive is created from `HEAD`, so the command intentionally stops if tracked or untracked changes are present. See [the Firefox store guide](docs/firefox-store.md) for listing copy, submission fields, reviewer notes, and the release checklist.
+
+### Reproducing the reviewer build
+
+Mozilla reviewers can reproduce the submitted extension with the default Node.js 24 environment and the repository's pinned pnpm version:
+
+```bash
+corepack enable
+corepack prepare pnpm@11.7.0 --activate
+pnpm install --frozen-lockfile
+pnpm package:firefox
+```
+
+The uploadable extension is written to `build/firefox-mv3-prod.zip`. No environment variables, private packages, native build tools, or external services are required.
 
 ## Adding another tracker
 
@@ -90,9 +136,9 @@ URL templates can use `{organization}` and `{game}`:
 
 ## Permissions and privacy
 
-The extension only runs on `https://sbox.game/*`. It does not collect data, run analytics, use browser storage, upload exported stats, or fetch tracker icons at runtime.
+The extension only runs on `https://sbox.game/*` and requests no extension API permissions. It does not collect data, run analytics, use browser storage, upload exported stats, or fetch tracker icons at runtime. Firefox builds explicitly declare `data_collection_permissions.required: ["none"]`.
 
-Tracker pages only open after you click one of their links.
+Tracker, project, and creator pages only open after you click one of their links. See the full [privacy policy](PRIVACY.md).
 
 ## Credits
 
