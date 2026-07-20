@@ -90,36 +90,6 @@ pnpm package
 
 `pnpm build` and `pnpm package` cover both Chromium and Firefox. Browser-specific commands are also available as `build:chrome`, `build:firefox`, `package:chrome`, and `package:firefox`.
 
-## Firefox Add-ons release
-
-Run the release command from a clean, committed worktree:
-
-```powershell
-pnpm release:firefox
-```
-
-It builds and validates the Firefox extension, then creates the two files needed for an AMO submission:
-
-```text
-build/firefox-mv3-prod.zip
-build/sbox-enhanced-1.0.0-source.zip
-```
-
-The source archive is created from `HEAD`, so the command intentionally stops if tracked or untracked changes are present. See [the Firefox store guide](docs/firefox-store.md) for listing copy, submission fields, reviewer notes, and the release checklist.
-
-### Reproducing the reviewer build
-
-Mozilla reviewers can reproduce the submitted extension with the default Node.js 24 environment and the repository's pinned pnpm version:
-
-```bash
-corepack enable
-corepack prepare pnpm@11.7.0 --activate
-pnpm install --frozen-lockfile
-pnpm package:firefox
-```
-
-The uploadable extension is written to `build/firefox-mv3-prod.zip`. No environment variables, private packages, native build tools, or external services are required.
-
 ## Adding another tracker
 
 Trackers live in [`lib/trackers.ts`](lib/trackers.ts). Adding one only takes an icon, a registry entry, and a URL test.
